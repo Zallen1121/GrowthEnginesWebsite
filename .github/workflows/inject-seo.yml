@@ -7,6 +7,9 @@ on:
       - 'index.html'
       - 'seo-head.html'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   inject-seo:
     runs-on: ubuntu-latest
