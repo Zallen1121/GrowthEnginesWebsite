@@ -91,18 +91,16 @@
       gap: 0.75rem;
       text-decoration: none;
     }
-    .nav-logo img {
-      height: 40px;
-      width: 40px;
-    }
-    .nav-logo span {
+    .nav-logo-text {
       font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: var(--white);
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      color: var(--gold);
+      line-height: 1;
     }
+    .nav-logo-text span { display: block; }
     .nav-cta {
       font-family: var(--font-heading);
       font-weight: 700;
@@ -332,15 +330,17 @@
   <!-- Navigation -->
   <nav class="nav">
     <a href="https://growthengines.com" class="nav-logo">
-      <img src="/logo.png" alt="Growth Engines logo">
-      <span>Growth Engines</span>
+      <div class="nav-logo-text">
+        <span>Growth</span>
+        <span>Engines</span>
+      </div>
     </a>
     <a href="mailto:blake@growthengines.com" class="nav-cta">Schedule a Call</a>
   </nav>
 
   <!-- Hero -->
   <section class="hero">
-    <h1>Our <span class="gold">Partner</span> Churches</h1>
+    <h1>Our <span class="gold">Partners</span></h1>
     <p>We don't consult from a distance. We embed as an integrated partner in the churches and nonprofits we serve across the country.</p>
     <div class="partner-count" id="partner-count"></div>
   </section>
