@@ -1,0 +1,92 @@
+[
+  {
+    "church": "Citymark Church",
+    "person": "Matt Jones",
+    "title": "Lead Pastor",
+    "city": "League City",
+    "state": "TX",
+    "lat": 29.5075,
+    "lng": -95.0949,
+    "quote": ""
+  },
+  {
+    "church": "Creative Church",
+    "person": "Jonathan Brozozog",
+    "title": "Lead Pastor",
+    "city": "Maple Grove",
+    "state": "MN",
+    "lat": 45.0725,
+    "lng": -93.4558,
+    "quote": ""
+  },
+  {
+    "church": "ForMidtown",
+    "person": "Micah Gaston",
+    "title": "Founder",
+    "city": "Mobile",
+    "state": "AL",
+    "lat": 30.6954,
+    "lng": -88.0399,
+    "quote": ""
+  },
+  {
+    "church": "Tree City Church",
+    "person": "Luke Wren",
+    "title": "Lead Pastor",
+    "city": "Gainesville",
+    "state": "FL",
+    "lat": 29.6516,
+    "lng": -82.3248,
+    "quote": ""
+  },
+  {
+    "church": "Centerpoint Church",
+    "person": "Steve Boston",
+    "title": "Executive Pastor",
+    "city": "Prattville",
+    "state": "AL",
+    "lat": 32.4638,
+    "lng": -86.4597,
+    "quote": ""
+  },
+  {
+    "church": "Christ Chapel",
+    "person": "Bobby Gourley",
+    "title": "Lead Pastor",
+    "city": "Florence",
+    "state": "AL",
+    "lat": 34.7998,
+    "lng": -87.6773,
+    "quote": ""
+  },
+  {
+    "church": "New Circle Church",
+    "person": "Kyle Waid",
+    "title": "Lead Pastor",
+    "city": "Lexington",
+    "state": "KY",
+    "lat": 38.0406,
+    "lng": -84.5037,
+    "quote": ""
+  },
+  {
+    "church": "No Off Season Fellowship",
+    "person": "Gavin & Brannon Willisson",
+    "title": "Founders",
+    "city": "Daphne",
+    "state": "AL",
+    "lat": 30.6035,
+    "lng": -87.9036,
+    "quote": ""
+  },
+  {
+    "church": "Citizen Heights Church",
+    "person": "Michael Giroux",
+    "title": "Lead Pastor",
+    "city": "Washington",
+    "state": "DC",
+    "lat": 38.9072,
+    "lng": -77.0369,
+    "quote": ""
+  }
+]

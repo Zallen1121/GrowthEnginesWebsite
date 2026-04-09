@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Our Partner Churches & Nonprofits | Growth Engines</title>
+  <meta name="description" content="See the churches and nonprofits partnering with Growth Engines for fractional CFO and executive leadership services across the United States." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://growthengines.com/partners" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://growthengines.com/partners" />
+  <meta property="og:site_name" content="Growth Engines" />
+  <meta property="og:title" content="Our Partner Churches & Nonprofits | Growth Engines" />
+  <meta property="og:description" content="See the churches and nonprofits partnering with Growth Engines for fractional CFO and executive leadership services across the United States." />
+  <meta property="og:image" content="https://growthengines.com/logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Our Partner Churches & Nonprofits | Growth Engines" />
+  <meta name="twitter:description" content="See the churches and nonprofits partnering with Growth Engines across the United States." />
+  <meta name="twitter:image" content="https://growthengines.com/logo.png" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Our Partner Churches & Nonprofits",
+    "description": "See the churches and nonprofits partnering with Growth Engines for fractional CFO and executive leadership services across the United States.",
+    "url": "https://growthengines.com/partners",
+    "isPartOf": { "@id": "https://growthengines.com/#website" },
+    "about": { "@id": "https://growthengines.com/#organization" }
+  }
+  </script>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Fonts (matching main site) -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── Tokens ── */
+    :root {
+      --gold: #F5BB1D;
+      --gold-light: #f7cb4e;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-card: #1a1a1a;
+      --gray-text: #a0a0a0;
+      --white: #ffffff;
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); }
+
+    /* ── Nav Bar ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: var(--black);
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 40px;
+      width: 40px;
+    }
+    .nav-logo span {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .nav-cta {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--black);
+      background: var(--gold);
+      padding: 0.6rem 1.5rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); color: var(--black); }
+
+    /* ── Hero Section ── */
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero p {
+      color: var(--gray-text);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .partner-count {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+    }
+
+    /* ── Map ── */
+    .map-wrapper {
+      flex: 1;
+      padding: 1.5rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    #map {
+      flex: 1;
+      min-height: 500px;
+      border-radius: 12px;
+      border: 1px solid #222;
+      overflow: hidden;
+    }
+
+    /* ── Leaflet Overrides ── */
+    .leaflet-container { background: var(--dark); }
+
+    /* Gold pulse marker */
+    .ge-marker {
+      width: 18px;
+      height: 18px;
+      background: var(--gold);
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(245, 187, 29, 0.5);
+      animation: pulse 2.5s infinite;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .ge-marker:hover {
+      transform: scale(1.4);
+      animation: none;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(245, 187, 29, 0.5); }
+      70%  { box-shadow: 0 0 0 12px rgba(245, 187, 29, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 187, 29, 0); }
+    }
+
+    /* Popup card */
+    .leaflet-popup-content-wrapper {
+      background: var(--dark-card) !important;
+      color: var(--white) !important;
+      border-radius: 10px !important;
+      border: 1px solid #333 !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+      padding: 0 !important;
+      min-width: 280px;
+    }
+    .leaflet-popup-content {
+      margin: 0 !important;
+      font-family: var(--font-body) !important;
+    }
+    .leaflet-popup-tip {
+      background: var(--dark-card) !important;
+      border: 1px solid #333 !important;
+      border-top: none !important;
+      border-left: none !important;
+    }
+    .leaflet-popup-close-button {
+      color: var(--gray-text) !important;
+      font-size: 20px !important;
+      top: 8px !important;
+      right: 10px !important;
+    }
+    .leaflet-popup-close-button:hover { color: var(--white) !important; }
+
+    .popup-card { padding: 1.25rem 1.5rem; }
+    .popup-church {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--gold);
+      margin-bottom: 0.15rem;
+    }
+    .popup-location {
+      font-size: 0.8rem;
+      color: var(--gray-text);
+      margin-bottom: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+    .popup-quote {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #d0d0d0;
+      font-style: italic;
+      margin-bottom: 0.85rem;
+      position: relative;
+      padding-left: 1rem;
+      border-left: 3px solid var(--gold);
+    }
+    .popup-person {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .popup-title {
+      font-size: 0.78rem;
+      color: var(--gray-text);
+    }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid #222;
+    }
+    .cta-section h2 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .cta-section p {
+      color: var(--gray-text);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--black);
+      background: var(--gold);
+      padding: 0.85rem 2.5rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--gold-light); color: var(--black); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid #222;
+      font-size: 0.8rem;
+      color: var(--gray-text);
+    }
+
+    /* ── Zoom control styling ── */
+    .leaflet-control-zoom a {
+      background: var(--dark-card) !important;
+      color: var(--white) !important;
+      border-color: #333 !important;
+    }
+    .leaflet-control-zoom a:hover {
+      background: #2a2a2a !important;
+    }
+    .leaflet-control-attribution {
+      background: rgba(10,10,10,0.8) !important;
+      color: #555 !important;
+      font-size: 10px !important;
+    }
+    .leaflet-control-attribution a { color: #666 !important; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav { padding: 0.75rem 1rem; }
+      .nav-logo span { font-size: 1rem; }
+      .hero { padding: 2rem 1rem 1rem; }
+      .map-wrapper { padding: 1rem; }
+      #map { min-height: 400px; }
+      .leaflet-popup-content-wrapper { min-width: 240px; }
+      .popup-card { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="https://growthengines.com" class="nav-logo">
+      <img src="/logo.png" alt="Growth Engines logo">
+      <span>Growth Engines</span>
+    </a>
+    <a href="mailto:blake@growthengines.com" class="nav-cta">Schedule a Call</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Our <span class="gold">Partner</span> Churches</h1>
+    <p>We don't consult from a distance. We embed as an integrated partner in the churches and nonprofits we serve across the country.</p>
+    <div class="partner-count" id="partner-count"></div>
+  </section>
+
+  <!-- Map -->
+  <section class="map-wrapper">
+    <div id="map"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to <span style="color: var(--gold);">grow</span>?</h2>
+    <p>See if your church or nonprofit is a fit for the Growth Engines partner model.</p>
+    <a href="mailto:blake@growthengines.com" class="cta-btn">Schedule a Call</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Growth Engines. All rights reserved. &nbsp;|&nbsp; <a href="https://growthengines.com">Back to Home</a></p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    // ── Initialize Map ──
+    const map = L.map('map', {
+      center: [35.5, -90],
+      zoom: 4.5,
+      zoomControl: true,
+      scrollWheelZoom: true,
+      attributionControl: true
+    });
+
+    // Dark tile layer (free, no API key)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    // ── Custom gold marker icon ──
+    const goldIcon = L.divIcon({
+      className: '',
+      html: '<div class="ge-marker"></div>',
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+      popupAnchor: [0, -14]
+    });
+
+    // ── Load Partners from JSON ──
+    fetch('/partners.json')
+      .then(res => res.json())
+      .then(partners => {
+        // Update counter
+        document.getElementById('partner-count').textContent =
+          partners.length + ' Partner' + (partners.length !== 1 ? 's' : '') + ' Nationwide';
+
+        // Add markers
+        partners.forEach(p => {
+          const quoteHTML = p.quote
+            ? `<div class="popup-quote">${p.quote}</div>`
+            : '';
+
+          const popupHTML = `
+            <div class="popup-card">
+              <div class="popup-church">${p.church}</div>
+              <div class="popup-location">${p.city}, ${p.state}</div>
+              ${quoteHTML}
+              <div class="popup-person">${p.person}</div>
+              <div class="popup-title">${p.title}</div>
+            </div>
+          `;
+
+          L.marker([p.lat, p.lng], { icon: goldIcon })
+            .addTo(map)
+            .bindPopup(popupHTML, {
+              maxWidth: 320,
+              closeButton: true
+            });
+        });
+
+        // Fit map to show all markers with padding
+        const group = L.featureGroup(
+          partners.map(p => L.marker([p.lat, p.lng]))
+        );
+        map.fitBounds(group.getBounds().pad(0.3));
+      })
+      .catch(err => {
+        console.error('Error loading partners:', err);
+      });
+  </script>
+
+</body>
+</html>
