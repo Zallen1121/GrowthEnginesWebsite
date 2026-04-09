@@ -1,0 +1,92 @@
+[
+  {
+    "church": "Citymark Church",
+    "person": "Matt Jones",
+    "title": "Lead Pastor",
+    "city": "League City",
+    "state": "TX",
+    "lat": 29.5075,
+    "lng": -95.0949,
+    "quote": "Growth Engines negotiated the sale of our land at $3.5 million above our original purchase price, then secured the funding and oversaw our $6 million construction project from start to finish with zero change orders. Along the way, they helped us raise $2 million in capital and managed every detail of the process with remarkable expertise. There is absolutely no way we could have accomplished this without them."
+  },
+  {
+    "church": "Creative Church",
+    "person": "Jonathan Brozozog",
+    "title": "Lead Pastor",
+    "city": "Maple Grove",
+    "state": "MN",
+    "lat": 45.0725,
+    "lng": -93.4558,
+    "quote": "Growth Engines has been a Godsend to Creative Church. Their ability to execute incredibly complex tasks with clarity and precision has been invaluable to our ministry. What could have been overwhelming projects were handled with confidence and excellence. Simply put, Growth Engines isn't an expense — it's an investment."
+  },
+  {
+    "church": "ForMidtown",
+    "person": "Micah Gaston",
+    "title": "Founder",
+    "city": "Mobile",
+    "state": "AL",
+    "lat": 30.6954,
+    "lng": -88.0399,
+    "quote": "Growth Engines helped our organization systematize our approach to growth and clearly identify our next steps. It gave us a practical framework to move forward with clarity, alignment, and intentional action."
+  },
+  {
+    "church": "Tree City Church",
+    "person": "Luke Wren",
+    "title": "Lead Pastor",
+    "city": "Gainesville",
+    "state": "FL",
+    "lat": 29.6516,
+    "lng": -82.3248,
+    "quote": "The team at Growth Engines have been incredibly helpful from day one. As a church plant, we couldn't imagine getting to this point without them! Thank you to Blake and the whole team!"
+  },
+  {
+    "church": "Centerpoint Church",
+    "person": "Steve Boston",
+    "title": "Executive Pastor",
+    "city": "Prattville",
+    "state": "AL",
+    "lat": 32.4638,
+    "lng": -86.4597,
+    "quote": ""
+  },
+  {
+    "church": "Christ Chapel",
+    "person": "Bobby Gourley",
+    "title": "Lead Pastor",
+    "city": "Florence",
+    "state": "AL",
+    "lat": 34.7998,
+    "lng": -87.6773,
+    "quote": ""
+  },
+  {
+    "church": "New Circle Church",
+    "person": "Kyle Waid",
+    "title": "Lead Pastor",
+    "city": "Lexington",
+    "state": "KY",
+    "lat": 38.0406,
+    "lng": -84.5037,
+    "quote": ""
+  },
+  {
+    "church": "No Off Season Fellowship",
+    "person": "Gavin & Brannon Willisson",
+    "title": "Founders",
+    "city": "Daphne",
+    "state": "AL",
+    "lat": 30.6035,
+    "lng": -87.9036,
+    "quote": ""
+  },
+  {
+    "church": "Citizen Heights Church",
+    "person": "Michael Giroux",
+    "title": "Lead Pastor",
+    "city": "Washington",
+    "state": "DC",
+    "lat": 38.9072,
+    "lng": -77.0369,
+    "quote": ""
+  }
+]
