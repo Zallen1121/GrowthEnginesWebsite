@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cohorts | Growth Engines</title>
+  <meta name="description" content="Join a Growth Engines cohort — intensive programs for church leaders, youth pastors, and nonprofit executives who want to grow with clarity and confidence." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://growthengines.com/cohorts" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://growthengines.com/cohorts" />
+  <meta property="og:title" content="Cohorts | Growth Engines" />
+  <meta property="og:description" content="Intensive cohort programs for church leaders and nonprofit executives. Real frameworks. Real results." />
+  <meta property="og:image" content="https://growthengines.com/logo.png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #F5BB1D;
+      --gold-light: #f7cb4e;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --gray: #888;
+      --white: #ffffff;
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: var(--black);
+      border-bottom: 1px solid #1e1e1e;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-text {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .nav-logo-text span { display: block; }
+    .nav-cta {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 0.6rem 1.5rem;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 5rem 2.5rem 3rem;
+      max-width: 900px;
+    }
+    .hero-label {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+    .hero p {
+      color: var(--gray);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 560px;
+    }
+
+    /* ── Cohort List ── */
+    .cohorts-section {
+      padding: 0 2.5rem 6rem;
+    }
+    .section-label {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .cohort-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cohort-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 2rem 0;
+      border-bottom: 1px solid #1e1e1e;
+      text-decoration: none;
+      color: inherit;
+      gap: 2rem;
+      transition: background 0.15s;
+      border-radius: 6px;
+    }
+    .cohort-row:hover .cohort-title { color: var(--gold); }
+    .cohort-row:hover .cohort-arrow { transform: translateX(6px); color: var(--gold); }
+    .cohort-row.disabled { cursor: default; opacity: 0.5; pointer-events: none; }
+
+    .cohort-left { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .cohort-title {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .cohort-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cohort-meta span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+    .cohort-meta span::before {
+      content: '·';
+      margin-right: 1rem;
+      color: #333;
+    }
+    .cohort-meta span:first-child::before { display: none; }
+
+    .badge {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 50px;
+    }
+    .badge-open {
+      background: rgba(245, 187, 29, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(245, 187, 29, 0.4);
+    }
+    .badge-soon {
+      background: rgba(255,255,255,0.05);
+      color: var(--gray);
+      border: 1px solid #2a2a2a;
+    }
+
+    .cohort-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cohort-arrow {
+      font-size: 1.5rem;
+      color: #444;
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid #1e1e1e;
+    }
+    .cta-section h2 {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .cta-section p { color: var(--gray); margin-bottom: 2rem; }
+    .cta-btn {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 1rem 2.5rem;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--gold-light); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #1e1e1e;
+      font-size: 0.8rem;
+      color: #444;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 3rem 1.25rem 2rem; }
+      .cohorts-section { padding: 0 1.25rem 4rem; }
+      .cohort-row { grid-template-columns: 1fr; }
+      .cohort-right { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://growthengines.com" class="nav-logo">
+      <div class="nav-logo-text">
+        <span>Growth</span>
+        <span>Engines</span>
+      </div>
+    </a>
+    <a href="mailto:blake@growthengines.com" class="nav-cta">Schedule a Call</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-label">Growth Engines</div>
+    <h1>Upcoming<br>Cohorts</h1>
+    <p>Intensive programs that compress years of experience into focused, actionable seasons — built for church leaders and nonprofit executives who are ready to grow.</p>
+  </section>
+
+  <section class="cohorts-section">
+    <div class="section-label">All Programs</div>
+
+    <div class="cohort-list">
+
+      <!-- Youth Ministry Cohort — OPEN -->
+      <a href="/cohorts/youth-ministry.html" class="cohort-row">
+        <div class="cohort-left">
+          <div class="cohort-title">Youth Ministry Cohort</div>
+          <div class="cohort-meta">
+            <span>Summer 2026</span>
+            <span>3 Months</span>
+            <span>Youth Pastors &amp; Student Ministry Directors</span>
+          </div>
+        </div>
+        <div class="cohort-right">
+          <span class="badge badge-open">Open · Summer 2026</span>
+          <span class="cohort-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Church Leadership Cohort — COMING SOON -->
+      <div class="cohort-row disabled">
+        <div class="cohort-left">
+          <div class="cohort-title">Church Leadership Cohort</div>
+          <div class="cohort-meta">
+            <span>Lead Pastors &amp; Executive Pastors</span>
+          </div>
+        </div>
+        <div class="cohort-right">
+          <span class="badge badge-soon">Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- Nonprofit Executive Cohort — COMING SOON -->
+      <div class="cohort-row disabled">
+        <div class="cohort-left">
+          <div class="cohort-title">Nonprofit Executive Cohort</div>
+          <div class="cohort-meta">
+            <span>Executive Directors &amp; Nonprofit Leaders</span>
+          </div>
+        </div>
+        <div class="cohort-right">
+          <span class="badge badge-soon">Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Don't see your cohort?</h2>
+    <p>Tell us what you need. New programs are added regularly.</p>
+    <a href="mailto:blake@growthengines.com" class="cta-btn">Get in Touch</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Growth Engines. All rights reserved. &nbsp;|&nbsp; <a href="https://growthengines.com">Back to Home</a></p>
+  </footer>
+
+</body>
+</html>
