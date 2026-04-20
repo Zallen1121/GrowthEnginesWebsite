@@ -457,7 +457,7 @@
       <p class="hero-body">The Growth Engines book is the foundational framework behind everything we do — a practical guide to the five engines every church and nonprofit needs to grow.</p>
       <p class="hero-body" style="margin-top: 1rem;">Two chapters are available now as a free download. The full book is coming soon.</p>
       <div class="hero-actions">
-        <a href="https://growthengines.org/assets/pdf/CHAPTER_ONE.pdf" download="Growth Engines The Book.pdf" class="btn-gold">Download Free Chapters</a>
+        <a href="#download" class="btn-gold">Download Free Chapters</a>
         <a href="mailto:blake@growthengines.com" class="btn-text">Get notified at launch</a>
       </div>
     </div>
@@ -506,7 +506,7 @@
         <p class="section-label">Free Download</p>
         <h2 class="chapters-heading">Start Reading<br>Today.</h2>
         <p class="chapters-body">Two full chapters are available now — no email required. Get a feel for the framework before the full book drops.</p>
-        <a href="https://growthengines.org/assets/pdf/CHAPTER_ONE.pdf" download="Growth Engines The Book.pdf" class="btn-gold">Download Free Chapters</a>
+        <a href="#" onclick="downloadPDFBook(); return false;" class="btn-gold">Download Free Chapters</a>
       </div>
       <ul class="chapters-list reveal">
         <li class="chapter-item">
@@ -540,6 +540,14 @@
   </footer>
 
   <script>
+    function downloadPDFBook() {
+      var link = document.createElement('a');
+      link.href = '/assets/pdf/chapter_one.pdf';
+      link.download = 'Growth Engines The Book.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
     var revealEls = document.querySelectorAll('.reveal');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
