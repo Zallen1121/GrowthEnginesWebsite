@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting... | Growth Engines</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <script>
+    (function() {
+      var path = window.location.pathname.toLowerCase();
+
+      // Specific redirects
+      var redirects = {
+        '/assets/pdf/chapter_one.pdf': '/#book',
+        '/assets/pdf/chapter_two.pdf': '/#book',
+        '/assets/pdf/chapter1.pdf':    '/#book',
+        '/assets/pdf/chapter2.pdf':    '/#book',
+      };
+
+      // Check for a matching redirect
+      for (var key in redirects) {
+        if (path === key) {
+          window.location.replace('https://growthengines.com' + redirects[key]);
+          return;
+        }
+      }
+
+      // Default: redirect to homepage
+      window.location.replace('https://growthengines.com');
+    })();
+  </script>
+</head>
+<body>
+  <style>
+    body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Inter', sans-serif; color: white; }
+    .msg { text-align: center; }
+    .msg a { color: #F5BB1D; }
+  </style>
+  <div class="msg">
+    <p>Redirecting you now...</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem; color:#555;">
+      If nothing happens, <a href="https://growthengines.com">click here</a>.
+    </p>
+  </div>
+</body>
+</html>
