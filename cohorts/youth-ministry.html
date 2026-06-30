@@ -641,10 +641,76 @@
       background: var(--gold-bright);
       padding: 1.1rem 3rem;
       border-radius: 3px;
+      border: none;
       text-decoration: none;
+      cursor: pointer;
       transition: background 0.2s;
     }
     .apply-btn:hover { background: #f7cb4e; }
+
+    /* ── Apply Form Panel ── */
+    .apply-form-panel {
+      max-width: 460px;
+      margin: 0 auto;
+      text-align: left;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.6s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    }
+    .apply-form-panel.open {
+      max-height: 900px;
+      opacity: 1;
+      margin-top: 3rem;
+    }
+    .apply-field { margin-bottom: 1.5rem; }
+    .apply-field label {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 0.6rem;
+    }
+    .apply-field input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px;
+      padding: 0.9rem 1rem;
+      color: white;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .apply-field input::placeholder { color: #555; }
+    .apply-field input:focus { border-color: var(--gold-bright); }
+    .apply-form-submit {
+      width: 100%;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold-bright);
+      padding: 1rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .apply-form-submit:hover { background: #f7cb4e; }
+    .apply-form-status {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #999;
+      text-align: center;
+      min-height: 1.2em;
+    }
     .apply-url {
       margin-top: 1.5rem;
       font-size: 0.8rem;
@@ -701,7 +767,7 @@
       <span class="for-tag">Every Church Size</span>
     </div>
     <div class="hero-cta-group">
-      <a href="mailto:blake@growthengines.com" class="btn-primary">Apply to the Cohort</a>
+      <a href="#applySection" class="btn-primary" id="heroApplyBtn">Apply to the Cohort</a>
       <span class="hero-deadline">Applications close <strong>August 15, 2026</strong></span>
     </div>
   </section>
@@ -863,12 +929,32 @@
   </section>
 
   <!-- Apply CTA -->
-  <section class="apply-section">
+  <section class="apply-section" id="applySection">
     <h2>Build it<br><em>this summer.</em></h2>
     <div class="apply-deadline">Applications close · <strong>Aug 15, '26</strong></div>
-    <a href="mailto:blake@growthengines.com" class="apply-btn">Apply to the Cohort</a>
+    <button type="button" class="apply-btn" id="applyBtn">Apply to the Cohort</button>
     <div class="apply-url">growthengines.com/cohorts</div>
+
+    <form id="applyForm" class="apply-form-panel" action="https://docs.google.com/forms/d/e/1FAIpQLSdnHs7xsS4NbiZhwlAiTQnvIJqfoxqR0DIx-dQWr6zh7d4Tsw/formResponse" method="POST" target="hidden_iframe">
+      <div class="apply-field">
+        <label for="applyName">Full Name</label>
+        <input type="text" id="applyName" name="entry.1272475662" placeholder="Full name" required>
+      </div>
+      <div class="apply-field">
+        <label for="applyEmail">Email</label>
+        <input type="email" id="applyEmail" name="entry.1935896336" placeholder="you@email.com" required>
+      </div>
+      <div class="apply-field">
+        <label for="applyPhone">Phone Number</label>
+        <input type="tel" id="applyPhone" name="entry.1774595436" placeholder="281-555-0100" required>
+      </div>
+      <input type="hidden" name="pageHistory" value="0">
+      <button type="submit" class="apply-form-submit">Submit Application</button>
+      <div class="apply-form-status" id="applyFormStatus" role="status"></div>
+    </form>
   </section>
+
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" title="form submission target"></iframe>
 
   <footer>
     <p>&copy; 2026 Growth Engines. All rights reserved. &nbsp;|&nbsp;
@@ -876,6 +962,55 @@
        <a href="https://growthengines.com">Home</a>
     </p>
   </footer>
+
+  <script>
+    (function () {
+      var heroBtn = document.getElementById('heroApplyBtn');
+      var applyBtn = document.getElementById('applyBtn');
+      var formPanel = document.getElementById('applyForm');
+      var applySection = document.getElementById('applySection');
+      var statusEl = document.getElementById('applyFormStatus');
+      var hiddenIframe = document.getElementById('hidden_iframe');
+      var iframeLoadCount = 0;
+
+      function openForm(scroll) {
+        formPanel.classList.add('open');
+        if (scroll) {
+          applySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        setTimeout(function () {
+          var nameField = document.getElementById('applyName');
+          if (nameField) nameField.focus();
+        }, scroll ? 600 : 100);
+      }
+
+      if (heroBtn) {
+        heroBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          openForm(true);
+        });
+      }
+
+      if (applyBtn) {
+        applyBtn.addEventListener('click', function () {
+          openForm(false);
+        });
+      }
+
+      formPanel.addEventListener('submit', function () {
+        statusEl.textContent = 'Submitting…';
+      });
+
+      hiddenIframe.addEventListener('load', function () {
+        iframeLoadCount++;
+        // first load event is the initial blank iframe — ignore it
+        if (iframeLoadCount > 1 && statusEl.textContent === 'Submitting…') {
+          statusEl.textContent = "Thanks! We'll be in touch soon.";
+          formPanel.reset();
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
