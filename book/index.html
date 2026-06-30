@@ -633,11 +633,14 @@
         if (localBtn) localBtn.style.display = 'none';
         if (scroll) {
           scheduleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(function () {
+            formPanel.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          }, 650);
         }
         setTimeout(function () {
           var nameField = document.getElementById('scheduleName');
           if (nameField) nameField.focus({ preventScroll: true });
-        }, scroll ? 600 : 100);
+        }, scroll ? 950 : 100);
       }
 
       triggers.forEach(function (trigger) {

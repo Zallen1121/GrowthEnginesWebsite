@@ -982,11 +982,14 @@
         if (applyBtn) applyBtn.style.display = 'none';
         if (scroll) {
           applySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(function () {
+            formPanel.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          }, 650);
         }
         setTimeout(function () {
           var nameField = document.getElementById('applyName');
           if (nameField) nameField.focus({ preventScroll: true });
-        }, scroll ? 600 : 100);
+        }, scroll ? 950 : 100);
       }
 
       if (heroBtn) {
