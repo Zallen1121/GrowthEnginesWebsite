@@ -754,7 +754,7 @@
     </a>
     <div class="nav-right">
       <a href="https://growthengines.com/cohorts" class="nav-back">← All Cohorts</a>
-      <a href="mailto:blake@growthengines.com" class="nav-cta">Register Now</a>
+      <a href="#applySection" class="nav-cta js-register-trigger">Register Now</a>
     </div>
   </nav>
 
@@ -940,15 +940,15 @@
 
     <form id="applyForm" class="apply-form-panel" action="https://docs.google.com/forms/d/e/1FAIpQLSdnHs7xsS4NbiZhwlAiTQnvIJqfoxqR0DIx-dQWr6zh7d4Tsw/formResponse" method="POST" target="hidden_iframe">
       <div class="apply-field">
-        <label for="applyName">Full Name</label>
+        <label for="applyName">Full Name *</label>
         <input type="text" id="applyName" name="entry.1272475662" placeholder="Full name" required>
       </div>
       <div class="apply-field">
-        <label for="applyEmail">Email</label>
-        <input type="email" id="applyEmail" name="entry.1935896336" placeholder="you@email.com" required>
+        <label for="applyEmail">Email *</label>
+        <input type="email" id="applyEmail" name="entry.1935896336" placeholder="your@email.com" required>
       </div>
       <div class="apply-field">
-        <label for="applyPhone">Phone Number</label>
+        <label for="applyPhone">Phone Number *</label>
         <input type="tel" id="applyPhone" name="entry.1774595436" placeholder="281-555-0100" required>
       </div>
       <input type="hidden" name="pageHistory" value="0">
@@ -970,6 +970,7 @@
     (function () {
       var heroBtn = document.getElementById('heroApplyBtn');
       var applyBtn = document.getElementById('applyBtn');
+      var navTriggers = document.querySelectorAll('.js-register-trigger');
       var formPanel = document.getElementById('applyForm');
       var applySection = document.getElementById('applySection');
       var statusEl = document.getElementById('applyFormStatus');
@@ -978,6 +979,7 @@
 
       function openForm(scroll) {
         formPanel.classList.add('open');
+        if (applyBtn) applyBtn.style.display = 'none';
         if (scroll) {
           applySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -993,6 +995,13 @@
           openForm(true);
         });
       }
+
+      navTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function (e) {
+          e.preventDefault();
+          openForm(true);
+        });
+      });
 
       if (applyBtn) {
         applyBtn.addEventListener('click', function () {
