@@ -616,6 +616,7 @@
     }
     .btn-dark {
       background: var(--black); color: var(--white);
+      font-family: var(--heading-font);
       font-size: 12px; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       padding: 18px 44px; border-radius: var(--radius);
@@ -1893,6 +1894,7 @@
 
     function openForm(scroll) {
       formPanel.classList.add('open');
+      if (localBtn) localBtn.style.display = 'none';
       if (scroll) {
         contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
