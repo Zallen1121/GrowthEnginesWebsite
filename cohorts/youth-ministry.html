@@ -770,7 +770,7 @@
       <span class="for-tag">Every Church Size</span>
     </div>
     <div class="hero-cta-group">
-      <a href="#applySection" class="btn-primary" id="heroApplyBtn">Apply to the Cohort</a>
+      <a href="#applySection" class="btn-primary" id="heroApplyBtn">Register Now</a>
       <span class="hero-deadline">Applications close <strong>August 15, 2026</strong></span>
     </div>
   </section>
@@ -935,7 +935,7 @@
   <section class="apply-section" id="applySection">
     <h2>Build it<br><em>this summer.</em></h2>
     <div class="apply-deadline">Applications close · <strong>Aug 15, '26</strong></div>
-    <button type="button" class="apply-btn" id="applyBtn">Apply to the Cohort</button>
+    <button type="button" class="apply-btn" id="applyBtn">Register Now</button>
     <div class="apply-url">growthengines.com/cohorts</div>
 
     <form id="applyForm" class="apply-form-panel" action="https://docs.google.com/forms/d/e/1FAIpQLSdnHs7xsS4NbiZhwlAiTQnvIJqfoxqR0DIx-dQWr6zh7d4Tsw/formResponse" method="POST" target="hidden_iframe">
@@ -983,7 +983,7 @@
         }
         setTimeout(function () {
           var nameField = document.getElementById('applyName');
-          if (nameField) nameField.focus();
+          if (nameField) nameField.focus({ preventScroll: true });
         }, scroll ? 600 : 100);
       }
 

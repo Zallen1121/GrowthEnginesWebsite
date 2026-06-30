@@ -223,36 +223,6 @@
       transition: transform 0.2s, color 0.2s;
     }
 
-    /* ── CTA ── */
-    .cta-section {
-      text-align: center;
-      padding: 4rem 2rem;
-      border-top: 1px solid #1e1e1e;
-    }
-    .cta-section h2 {
-      font-family: var(--font-heading);
-      font-weight: 900;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-    .cta-section p { color: var(--gray); margin-bottom: 2rem; }
-    .cta-btn {
-      display: inline-block;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--black);
-      background: var(--gold);
-      padding: 1rem 2.5rem;
-      border-radius: 3px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .cta-btn:hover { background: var(--gold-light); }
-
     /* ── Schedule Call Section ── */
     .schedule-section {
       text-align: center;
@@ -416,12 +386,6 @@
     </div>
   </section>
 
-  <section class="cta-section">
-    <h2>Don't see your cohort?</h2>
-    <p>Tell us what you need. New programs are added regularly.</p>
-    <a href="mailto:blake@growthengines.com" class="cta-btn">Get in Touch</a>
-  </section>
-
   <section class="schedule-section" id="schedule">
     <h2>Schedule a Call</h2>
     <p>Talk through your goals and see if a Growth Engines cohort is the right fit.</p>
@@ -470,7 +434,7 @@
         }
         setTimeout(function () {
           var nameField = document.getElementById('scheduleName');
-          if (nameField) nameField.focus();
+          if (nameField) nameField.focus({ preventScroll: true });
         }, scroll ? 600 : 100);
       }
 
