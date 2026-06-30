@@ -216,6 +216,7 @@
     .nav-cta {
       background: var(--gold);
       color: var(--black);
+      font-family: var(--heading-font);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
@@ -767,7 +768,7 @@
       font-size: 12px; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       padding: 16px 40px; border-radius: var(--radius);
-      font-family: var(--body-font);
+      font-family: var(--heading-font);
       border-bottom: none !important;
     }
 
@@ -1857,7 +1858,7 @@
 <section class="cta-strip" id="contact">
   <p class="section-label">Let's Talk</p>
   <h2 class="cta-title"><span class="">Ready to</span><br><span class="outline-black">Grow?</span></h2>
-  <p class="cta-body">Schedule a free coaching call and let's talk about where your organization is, where it's going, and what's getting in the way.</p>
+  <p class="cta-body">Schedule a call and let's talk about where your organization is, where it's going, and what's getting in the way.</p>
   <button type="button" id="cta-btn-main" class="btn-dark">Schedule a Free Call</button>
   <p class="cta-sub"><br></p>
 
@@ -1900,7 +1901,7 @@
       }
       setTimeout(function () {
         var nameField = document.getElementById('scheduleName');
-        if (nameField) nameField.focus();
+        if (nameField) nameField.focus({ preventScroll: true });
       }, scroll ? 600 : 100);
     }
 

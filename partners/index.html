@@ -458,7 +458,7 @@
         }
         setTimeout(function () {
           var nameField = document.getElementById('scheduleName');
-          if (nameField) nameField.focus();
+          if (nameField) nameField.focus({ preventScroll: true });
         }, scroll ? 600 : 100);
       }
 
