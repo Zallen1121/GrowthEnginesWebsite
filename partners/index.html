@@ -299,6 +299,49 @@
       transition: background 0.2s;
     }
     .cta-btn:hover { background: var(--gold-light); color: var(--black); }
+    .cta-btn.schedule-btn { border: none; cursor: pointer; }
+    .schedule-form-panel {
+      max-width: 460px;
+      margin: 0 auto;
+      text-align: left;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .6s ease, opacity .4s ease, margin-top .4s ease;
+    }
+    .schedule-form-panel.open { max-height: 900px; opacity: 1; margin-top: 2rem; }
+    .schedule-field { margin-bottom: 1.25rem; }
+    .schedule-field label {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .schedule-field input {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .schedule-field input::placeholder { color: #555; }
+    .schedule-field input:focus { border-color: var(--gold); }
+    .schedule-form-submit {
+      width: 100%;
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--black); background: var(--gold);
+      padding: 0.85rem; border: none; border-radius: 4px;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .schedule-form-submit:hover { background: var(--gold-light); }
+    .schedule-form-status { margin-top: 0.85rem; font-size: 0.85rem; color: var(--gray-text); text-align: center; min-height: 1.2em; }
 
     /* ── Footer ── */
     .footer {
@@ -349,7 +392,7 @@
     </a>
     <div class="nav-right">
       <a href="https://growthengines.com" class="nav-back">← Back to Home</a>
-      <a href="mailto:blake@growthengines.com" class="nav-cta">Schedule a Call</a>
+      <a href="#schedule" class="nav-cta js-schedule-trigger">Schedule a Call</a>
     </div>
   </nav>
 
@@ -366,16 +409,84 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta-section">
+  <section class="cta-section" id="schedule">
     <h2>Ready to <span style="color: var(--gold);">grow</span>?</h2>
     <p>See if your church or nonprofit is a fit for the Growth Engines partner model.</p>
-    <a href="mailto:blake@growthengines.com" class="cta-btn">Schedule a Call</a>
+    <button type="button" class="cta-btn schedule-btn" id="scheduleBtnMain">Schedule a Call</button>
+
+    <form id="scheduleForm" class="schedule-form-panel" action="https://docs.google.com/forms/d/e/1FAIpQLSfoAYhHsrHDvU1xF3xw9x4_GpPMDZP83JLOWYEtYfR4YTYL6g/formResponse" method="POST" target="schedule_hidden_iframe">
+      <div class="schedule-field">
+        <label for="scheduleName">Full Name</label>
+        <input type="text" id="scheduleName" name="entry.2023009166" placeholder="Full name" required>
+      </div>
+      <div class="schedule-field">
+        <label for="scheduleEmail">Email</label>
+        <input type="email" id="scheduleEmail" name="entry.1019227189" placeholder="you@email.com" required>
+      </div>
+      <div class="schedule-field">
+        <label for="schedulePhone">Phone Number</label>
+        <input type="tel" id="schedulePhone" name="entry.286551394" placeholder="281-555-0100" required>
+      </div>
+      <input type="hidden" name="pageHistory" value="0">
+      <button type="submit" class="schedule-form-submit">Submit Request</button>
+      <div class="schedule-form-status" id="scheduleFormStatus" role="status"></div>
+    </form>
   </section>
+
+  <iframe name="schedule_hidden_iframe" id="schedule_hidden_iframe" style="display:none;" title="form submission target"></iframe>
 
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2026 Growth Engines. All rights reserved. &nbsp;|&nbsp; <a href="https://growthengines.com">Back to Home</a></p>
   </footer>
+
+  <script>
+    (function () {
+      var triggers = document.querySelectorAll('.js-schedule-trigger');
+      var localBtn = document.getElementById('scheduleBtnMain');
+      var formPanel = document.getElementById('scheduleForm');
+      var scheduleSection = document.getElementById('schedule');
+      var statusEl = document.getElementById('scheduleFormStatus');
+      var hiddenIframe = document.getElementById('schedule_hidden_iframe');
+      var iframeLoadCount = 0;
+
+      function openForm(scroll) {
+        formPanel.classList.add('open');
+        if (scroll) {
+          scheduleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        setTimeout(function () {
+          var nameField = document.getElementById('scheduleName');
+          if (nameField) nameField.focus();
+        }, scroll ? 600 : 100);
+      }
+
+      triggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function (e) {
+          e.preventDefault();
+          openForm(true);
+        });
+      });
+
+      if (localBtn) {
+        localBtn.addEventListener('click', function () {
+          openForm(false);
+        });
+      }
+
+      formPanel.addEventListener('submit', function () {
+        statusEl.textContent = 'Submitting…';
+      });
+
+      hiddenIframe.addEventListener('load', function () {
+        iframeLoadCount++;
+        if (iframeLoadCount > 1 && statusEl.textContent === 'Submitting…') {
+          statusEl.textContent = "Thanks! We'll be in touch soon.";
+          formPanel.reset();
+        }
+      });
+    })();
+  </script>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
