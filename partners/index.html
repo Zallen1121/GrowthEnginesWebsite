@@ -120,7 +120,7 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gray);
+      color: var(--gray-text);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -452,6 +452,7 @@
 
       function openForm(scroll) {
         formPanel.classList.add('open');
+        if (localBtn) localBtn.style.display = 'none';
         if (scroll) {
           scheduleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }

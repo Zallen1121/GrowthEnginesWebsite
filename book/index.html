@@ -630,6 +630,7 @@
 
       function openForm(scroll) {
         formPanel.classList.add('open');
+        if (localBtn) localBtn.style.display = 'none';
         if (scroll) {
           scheduleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
